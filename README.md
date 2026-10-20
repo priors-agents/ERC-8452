@@ -1,4 +1,4 @@
-# Agent Default Registry (draft ERC)
+# ERC-8452: Agent Default Registry (draft)
 
 One contract where lenders record the defaults of their loans to agent identities, keyed by identity and by the owner
 address the loan recorded. Any contract can then ask, inside the transaction that opens a line: how many open and cured
@@ -7,10 +7,9 @@ only on the reader's own list of lenders, whatever anyone else records.
 
 Identities are token ids of an ERC-721 identity registry, such as the Identity Registry of ERC-8004 (Trustless Agents).
 
-**Status: draft, not submitted.** The text is in
-[`ERCS/erc-draft_agent_default_registry.md`](ERCS/erc-draft_agent_default_registry.md). Its `eip: 99903` is a
-placeholder: the ERC editors assign the real number when the pull request is opened on ethereum/ERCs. Discussion will
-open on Ethereum Magicians first.
+**Status: draft, not submitted.** The text is in [`ERCS/erc-8452.md`](ERCS/erc-8452.md). ERC-8452 is the next number
+that was free on 2026-10-20; the ERC editors confirm it, or assign another, when the pull request is opened on
+ethereum/ERCs. Discussion opens on Ethereum Magicians first.
 
 ## Why
 
@@ -23,7 +22,7 @@ the fact itself, the loan that was not repaid, and lets each reader decide whose
 
 | Path | What |
 |---|---|
-| `ERCS/erc-draft_agent_default_registry.md` | The ERC text, in the ethereum/ERCs template |
+| `ERCS/erc-8452.md` | The ERC text, in the ethereum/ERCs template |
 | `src/IAgentDefaultRegistry.sol` | The interface |
 | `src/AgentDefaultRegistry.sol` | A reference registry with per-reporter counts (not audited) |
 | `test/AgentDefaultRegistry.t.sol` | Foundry tests, including counts that stay cheap after a reporter spams records |
@@ -42,9 +41,9 @@ CI runs all three on every push (`.github/workflows/ci.yml`).
 
 ## Related drafts
 
-- Agent Credit Lines: one interface to borrow, repay and default against any lender to agent identities (to be
-  published as github.com/priors-agents/erc-agent-credit-lines). Its `Defaulted` event is what a lender records here.
-- Credit history for ERC-8004 agents: a profile of the ERC-8004 Reputation Registry for loan outcomes
+- ERC-8450 Agent Credit Lines: one interface to borrow, repay and default against any lender to agent identities
+  (github.com/priors-agents/ERC-8450). Its `Defaulted` event is what a lender records here.
+- ERC-8449 Credit history for ERC-8004 agents: a profile of the ERC-8004 Reputation Registry for loan outcomes
   (`docs/ERC-8004-CREDIT.md` in github.com/priors-agents/priors). Its `credit.defaulted` entries are the off-chain,
   rebuildable side of the same fact; this registry is the side a contract can read.
 
