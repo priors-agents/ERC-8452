@@ -1,16 +1,19 @@
 # Agent Default Registry (draft ERC)
 
 One contract where lenders record the defaults of their loans to agent identities, keyed by identity and by the owner
-address the loan recorded. Any contract can then ask, inside the transaction that opens a line: how many open and cured
-defaults does this identity, or this owner, have according to the lenders I trust? The cost of that question depends
-only on the reader's own list of lenders, whatever anyone else records.
+address the loan recorded. Any contract can then ask, inside the transaction that opens a line: how many open, cured
+and still provisional defaults does this identity, or this owner, have according to the lenders I trust? The cost of
+that question depends only on the reader's own list of lenders, whatever anyone else records. A lender that reports
+from several addresses names one of them its primary, and a record made by mistake can be voided within three days.
 
 Identities are token ids of an ERC-721 identity registry, such as the Identity Registry of ERC-8004 (Trustless Agents).
 
 **Status: draft, not submitted.** The text is in
 [`ERCS/erc-draft_agent_default_registry.md`](ERCS/erc-draft_agent_default_registry.md). Its `eip: 99903` is a
 placeholder: the ERC editors assign the real number when the pull request is opened on ethereum/ERCs. Discussion:
-[Ethereum Magicians](https://ethereum-magicians.org/t/erc-tba-agent-default-registry/30026).
+[Ethereum Magicians](https://ethereum-magicians.org/t/erc-tba-agent-default-registry/30026). The second revision
+(2026-10-21) takes in that review: primaries stored with each record, a void window with provisional counts, `owner` as
+a requirement on the reporter, and cures by the lender only.
 
 ## Why
 
@@ -25,8 +28,8 @@ the fact itself, the loan that was not repaid, and lets each reader decide whose
 |---|---|
 | `ERCS/erc-draft_agent_default_registry.md` | The ERC text, in the ethereum/ERCs template |
 | `src/IAgentDefaultRegistry.sol` | The interface |
-| `src/AgentDefaultRegistry.sol` | A reference registry with per-reporter counts (not audited) |
-| `test/AgentDefaultRegistry.t.sol` | Foundry tests, including counts that stay cheap after a reporter spams records |
+| `src/AgentDefaultRegistry.sol` | A reference registry: per-primary counts, a three-day void window (not audited) |
+| `test/AgentDefaultRegistry.t.sol` | Foundry tests: primaries, voids, provisional counts, cheap counts after spam |
 | `scripts/lint-erc.sh` | Lints the ERC text with eipw the way the ethereum/ERCs CI does |
 | `eipw.toml` | The ethereum/ERCs repository's eipw configuration, copied as is |
 
