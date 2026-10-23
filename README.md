@@ -8,12 +8,12 @@ from several addresses names one of them its primary, and a record made by mista
 
 Identities are token ids of an ERC-721 identity registry, such as the Identity Registry of ERC-8004 (Trustless Agents).
 
-**Status: draft, not submitted.** The text is in
+**Status: draft, submitted as [ethereum/ERCs#2105](https://github.com/ethereum/ERCs/pull/2105).** The text is in
 [`ERCS/erc-draft_agent_default_registry.md`](ERCS/erc-draft_agent_default_registry.md). Its `eip: 99903` is a
-placeholder: the ERC editors assign the real number when the pull request is opened on ethereum/ERCs. Discussion:
-[Ethereum Magicians](https://ethereum-magicians.org/t/erc-tba-agent-default-registry/30026). The second revision
-(2026-10-21) takes in that review: primaries stored with each record, a void window with provisional counts, `owner` as
-a requirement on the reporter, and cures by the lender only.
+placeholder until the ERC editors assign a number. Discussion: [Ethereum
+Magicians](https://ethereum-magicians.org/t/erc-tba-agent-default-registry/30026). The second revision (2026-10-21)
+takes in that review: primaries stored with each record, a void window with provisional counts, `owner` as a requirement
+on the reporter, and cures by the lender only.
 
 ## Why
 
